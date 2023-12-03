@@ -10,7 +10,7 @@ namespace backend.Models
         public string Name { get; set; }
         public bool IsCompleted { get; set; } = false;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime CompletedAt { get; set; }
+        public DateTime? CompletedAt { get; set; }
 
     }
 }
