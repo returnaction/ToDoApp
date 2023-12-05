@@ -12,7 +12,14 @@ builder.Services.AddControllers();
 builder.Services.ConfigureCors();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection")));
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));
+builder.Services.AddDbContext<ApplicationDbContext>(dbContextOptions => dbContextOptions
+                           .UseMySql(connectionString, serverVersion)
+                           .LogTo(Console.WriteLine, LogLevel.Information)
+                           .EnableSensitiveDataLogging()
+                           .EnableDetailedErrors());
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 
 var app = builder.Build();

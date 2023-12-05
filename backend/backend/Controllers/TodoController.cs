@@ -23,7 +23,7 @@ namespace backend.Controllers
         {
             try
             {
-                var todos = _repository.GetAllTodos();
+                IEnumerable<Todo> todos = _repository.GetAllTodos();
 
                 return Ok(todos);
             }
