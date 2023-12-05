@@ -1,12 +1,13 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState, useEffect } from "react";
-import TodoWrapper from "./Components/TodoWrapper";
+import ToDoList from "./Components/TodoList/TodoList";
+
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <TodoWrapper />
+      <ToDoList />
     </div>
   );
 }
