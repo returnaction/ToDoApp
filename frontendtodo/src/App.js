@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     fetchTodos();
-  }, [todos]);
+  }, []);
 
   // get Todos[]
   const fetchTodos = async () => {
