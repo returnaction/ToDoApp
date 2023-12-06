@@ -1,5 +1,5 @@
 import ToDoObject from "../ToDoObject/ToDoObject";
-const ToDoList = ({}) => {
+const ToDoList = ({ todos, onCreate, onUpdate, onDelete }) => {
   return (
     <div>
       <ToDoObject />
